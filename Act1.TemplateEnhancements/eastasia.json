@@ -22,12 +22,12 @@
         },
         "ubuntuOSVersion": {
             "type": "string",
-            "defaultValue": "16.04.0-LTS",
+            "defaultValue": "16.04-LTS",
             "allowedValues": [
-                "12.04.5-LTS",
-                "14.04.5-LTS",
-                "15.10",
-                "16.04.0-LTS"
+                "16.10",
+                "17.10",
+                "17.04",
+                "16.04-LTS"
             ],
             "metadata": {
                 "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
@@ -49,7 +49,7 @@
         "publicIPAddressName": "myPublicIP",
         "publicIPAddressType": "Dynamic",
         "vmName": "MyUbuntuVM",
-        "vmSize": "Standard_A1",
+        "vmSize": "Standard_DS4_v2",
         "virtualNetworkName": "MyVNET",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks/', concat(parameters('index'),variables('virtualNetworkName')))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('index'),variables('subnetName'))]"
@@ -59,7 +59,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[concat(parameters('index'), variables('storageAccountName'))]",
             "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",
+            "location": "Eastus",
             "sku": {
                 "name": "[variables('storageAccountType')]"
             },
@@ -70,7 +70,7 @@
             "apiVersion": "2017-04-01",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "[concat(parameters('index'), variables('publicIPAddressName'))]",
-            "location": "[resourceGroup().location]",
+            "location": "Eastus",
             "properties": {
                 "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
                 "dnsSettings": {
@@ -82,7 +82,7 @@
             "apiVersion": "2017-04-01",
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[concat(parameters('index'), variables('virtualNetworkName'))]",
-            "location": "[resourceGroup().location]",
+            "location": "Eastus",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -103,7 +103,7 @@
             "apiVersion": "2017-04-01",
             "type": "Microsoft.Network/networkInterfaces",
             "name": "[concat(parameters('index'), variables('nicName'))]",
-            "location": "[resourceGroup().location]",
+            "location": "Eastus",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses/', concat(parameters('index'),variables('publicIPAddressName')))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/', concat(parameters('index'),variables('virtualNetworkName')))]"
@@ -129,7 +129,7 @@
             "apiVersion": "2017-03-30",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[concat(parameters('index'), variables('vmName'))]",
-            "location": "[resourceGroup().location]",
+            "location": "Eastus",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', concat(parameters('index'),variables('storageAccountName')))]",
                 "[resourceId('Microsoft.Network/networkInterfaces/', concat(parameters('index'),variables('nicName')))]"
