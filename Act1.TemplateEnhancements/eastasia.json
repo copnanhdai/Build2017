@@ -22,12 +22,12 @@
         },
         "ubuntuOSVersion": {
             "type": "string",
-            "defaultValue": "16.04-LTS",
+            "defaultValue": "16.04.0-LTS",
             "allowedValues": [
-                "16.10",
-                "17.10",
-                "17.04",
-                "16.04-LTS"
+                "12.04.5-LTS",
+                "14.04.5-LTS",
+                "15.10",
+                "16.04.0-LTS"
             ],
             "metadata": {
                 "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
@@ -49,7 +49,7 @@
         "publicIPAddressName": "myPublicIP",
         "publicIPAddressType": "Dynamic",
         "vmName": "MyUbuntuVM",
-        "vmSize": "Standard_DS4_v2",
+        "vmSize": "Standard_A1",
         "virtualNetworkName": "MyVNET",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks/', concat(parameters('index'),variables('virtualNetworkName')))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('index'),variables('subnetName'))]"
@@ -188,4 +188,3 @@
         }
     }
 }
-
