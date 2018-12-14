@@ -22,12 +22,12 @@
         },
        "ubuntuOSVersion": {
             "type": "string",
-            "defaultValue": "16.04.3-LTS",
+            "defaultValue": "18.04-LTS",
             "allowedValues": [
                 "16.10",
                 "17.10",
                 "17.04",
-                "16.04.3-LTS"
+                "18.04-LTS"
             ],
             "metadata": {
                 "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
